@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الأطباق المغربية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>ألذ الأطباق المغربية</h1>
+      <p>استمتع بنكهات تقليدية تجمع بين الأصالة والذوق الرفيع</p>
+      <div class="search-bar">
+        <input id="search-input" type="search" placeholder="ابحث عن طبق... مثال: حريرة، طاجين، كسكس">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <a href="couscous.html" class="card" data-name="الكسكس المغربي">
+        <img src="images/couscous.jpg" alt="الكسكس المغربي">
+        <div class="info">
+          <h2>الكسكس المغربي</h2>
+          <p>⏱️ التحضير والطهي: 90 دقيقة</p>
+        </div>
+      </a>
+
+      <a href="tajine.html" class="card" data-name="الطاجين المغربي">
+        <img src="images/tajine.jpg" alt="الطاجين المغربي">
+        <div class="info">
+          <h2>الطاجين المغربي</h2>
+          <p>⏱️ التحضير والطهي: 75 دقيقة</p>
+        </div>
+      </a>
+
+      <a href="pastilla.html" class="card" data-name="البسطيلة المغربية">
+        <img src="images/pastilla.jpg" alt="البسطيلة المغربية">
+        <div class="info">
+          <h2>البسطيلة المغربية</h2>
+          <p>⏱️ التحضير والطهي: 120 دقيقة</p>
+        </div>
+      </a>
+
+      <a href="harira.html" class="card" data-name="الحريرة المغربية">
+        <img src="images/harira.jpg" alt="الحريرة المغربية">
+        <div class="info">
+          <h2>الحريرة المغربية</h2>
+          <p>⏱️ التحضير والطهي: 60 دقيقة</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 المطبخ المغربي - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+function normalizeText(s){
+  return s.trim().toLowerCase();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  const input = document.getElementById('search-input');
+  const cards = Array.from(document.querySelectorAll('.card'));
+
+  input.addEventListener('input', function(){
+    const q = normalizeText(this.value);
+    cards.forEach(card => {
+      const name = normalizeText(card.dataset.name || '');
+      if(!q || name.includes(q)){
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
